@@ -3,6 +3,16 @@ import {Blog} from "../hooks"
 import { Avatar } from "./BlogCard"
 
 export const FullBlog = ({blog} : {blog : Blog})=>{
+
+    function getCurrentDate() {
+        const now = new Date();
+        const day = now.getDate();
+        const month = now.toLocaleString('default', { month: 'long' });
+        const year = now.getFullYear();
+    
+        return `${day} ${month} ${year}`;
+    }
+
     return(
         <div>
         <Appbar/>
@@ -13,7 +23,7 @@ export const FullBlog = ({blog} : {blog : Blog})=>{
                         {blog.title}
                     </div>
                     <div className="text-slate-500 pt-2">
-                        Posted on 2nd Feb 2024
+                        Posted on {getCurrentDate()}
                     </div>
                     <div className="">
                         {blog.content}
@@ -33,7 +43,7 @@ export const FullBlog = ({blog} : {blog : Blog})=>{
             </div>
 
             <div className="text-slate-500">
-                You are about to read this phrase which is amazing!
+                You are about to read this Blog which is amazing!
             </div>
         </div>
     </div>
