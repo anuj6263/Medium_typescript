@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface BlogCardProps {
     id : string,
@@ -32,10 +32,21 @@ export const BlogCard = ({
     );
 };
 
-export function Avatar({ name, size = 6 }: { name: string, size?: number }) {
+interface AvatarProps {
+    name: string;
+    size?: number;
+}
+
+export function Avatar({ name, size = 6 }: AvatarProps) {
+    const nagigate = useNavigate();
+
+    const changeLoc = () => {
+        nagigate("/signup");
+    };
+
     return (
-        <div className={`flex items-center justify-center w-10 h-10 bg-gray-400 rounded-full ${size}`}>
-            <span className="text-lg text-gray-700">{name[0]}</span>
+        <div onClick={changeLoc} className={`flex items-center justify-center w-10 h-10 bg-gray-400 rounded-full text-lg text-gray-700 ${size}`}>
+            <span>{name[0]}</span>
         </div>
     );
 }
